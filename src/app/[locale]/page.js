@@ -50,7 +50,7 @@ export default async function Home() {
 
 async function CardList({backgroundImage, titleId, descriptionId, t}) {
     return (
-        <li className={"h-72 flex-1 text-center bg-cover bg-center rounded-lg flex justify-center items-center"}
+        <li key={titleId} className={"h-72 flex-1 text-center bg-cover bg-center rounded-lg flex justify-center items-center"}
             style={{backgroundImage: `url(/image/cards/cards_protoss.jpg)`}}>
             <h3>{t(`home.info.features.features.${titleId}.title`)}</h3>
         </li>

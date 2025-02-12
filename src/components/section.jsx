@@ -1,4 +1,6 @@
 export default function Section({ description, title, background, color = "red", children }) {
+
+    // fetch("/api/session")
     return (
         <section
             className=" text-white p-8 flex flex-col gap-6 min-h-[600px] "

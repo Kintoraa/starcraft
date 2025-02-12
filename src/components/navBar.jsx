@@ -1,20 +1,35 @@
 "use client"
 import {UserRound} from "lucide-react";
 import {useChangeLocale, useCurrentLocale, useI18n} from "../../locales/clients";
-import {useEffect, useState} from "react";
 import useSession from "@/app/lib/useSession.js";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import Link from "next/link.js";
+import Link from "next/link";
 import useLogout from "@/app/lib/actions/logout.js";
+import {useEffect, useState} from "react";
+    import { create } from 'zustand'
+// import {useIsLogged} from "@/app/store/logged.zustand.js";
+
+
 
 export default  function NavBar() {
+    const { isAuth, loading, userId} =  useSession();
     const t = useI18n();
+    // const  {isLogged, setLogged} = useIsLogged();
+    const [isLoggedIn, setIsLoggedIn] = useState(null);
     const changeLocale = useChangeLocale();
     const locale = useCurrentLocale();
-    const {isAuth, loading} = useSession();
 
 
-
+    //
+    // useEffect(() => {
+    //  const getSession = async () => {
+    // console.log("AUTH" + isAuth)
+    //     setIsLoggedIn(isAuth)
+    //
+    //  }
+    //  getSession();
+    // }, []);
+    console.log(isAuth)
     return (
         <nav
             className={"bg-[#1C2433] h-24 w-[95%] p-4 top-4 left-1/2 -translate-x-1/2  flex fixed justify-between text-white font-bold items-center rounded-lg"}>
@@ -37,7 +52,7 @@ export default  function NavBar() {
                 <option className={"bg-transparent"} value={"fr"}>Francais</option>
                 <option className={"bg-transparent outline-none"} value={"en"}>Anglais</option>
             </select>
-            <h1 className={"uppercase text-2xl left-1/2 -translate-x-1/2 absolute"}>StarCraft 2</h1>
+            <h1 className={"uppercase text-2xl left-1/2 -translate-x-1/2 absolute"}> <Link href={"/"}> StarCraft 2</Link></h1>
         </nav>
     )
 
@@ -45,12 +60,8 @@ export default  function NavBar() {
 
 
 export function IsLogged() {
+     const logout = useLogout();
 
-
-    function logout() {
-        useLogout();
-        console.log("logout")
-    }
 
     return (
         <>
@@ -82,7 +93,7 @@ export function IsLogged() {
                     <div className="modal-action">
                         <form method="dialog" className={"flex gap-4"}>
                             {/* if there is a button in form, it will close the modal */}
-                            <button className="btn" onClick={() => logout()} >Déconnexion</button>
+                            <button className="btn" onClick={logout} >Déconnexion</button>
                             <button className="btn">Annuler</button>
                         </form>
                     </div>

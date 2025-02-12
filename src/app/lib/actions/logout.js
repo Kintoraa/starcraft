@@ -1,10 +1,10 @@
 import {useEffect, useState} from "react";
+// import {useIsLogged} from "@/app/store/logged.zustand.js";
 
 export default function useLogout() {
-    const [isAuth, setIsAuth] = useState(null);
+    // const {isLogged, setLogged} = useIsLogged();
 
     useEffect(() => {
-        console.log("Logout");
 
         const logoutSession = async () => {
             try {
@@ -18,5 +18,5 @@ export default function useLogout() {
         logoutSession();
     }, [])
 
-    return({isAuth})
+    // return({isLogged})
 }

@@ -2,10 +2,12 @@
 import {useForm} from "react-hook-form";
 import {useState} from "react";
 import {getUser} from "@/db/controller/login.js";
+import { useRouter } from 'next/navigation'
 
 
 export default function FormLogin() {
   const[isLogged,setIsLogged] = useState(null);
+  const router = useRouter();
     const {
         register, handleSubmit, watch, formState: {errors},
     } = useForm()
@@ -14,6 +16,13 @@ export default function FormLogin() {
     const {email, password} = data
     const user = await getUser(email, password)
         setIsLogged(user);
+
+    if(user) {
+    // const {isLogged, setLogged} = useIsLogged();
+    // setLogged(true)
+      setIsLogged(true);
+    router.push("/")
+    }
 
     }
 
@@ -33,6 +42,7 @@ export default function FormLogin() {
                 <label className="text-white mb-2 font-semibold flex flex-col text-center">
                     Password
                     <input
+                        type={"password"}
                         label="password"
                         {...register("password", {required: true, maxLength: 20})}
                         className="mt-2 p-3 w-60 bg-gray-700 text-white rounded-md border border-gray-600 focus:border-blue-500 focus:outline-none"
