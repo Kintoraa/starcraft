@@ -3,43 +3,66 @@ const en = {
         title: "For Beginners",
         story: {
             title: "My Story",
-            description: `I recently started playing <strong>StarCraft</strong> and found that there is a
- <strong>significant</strong> lack of easily understandable content to quickly grasp the game, especially in
-  <strong>French</strong>. So, as a web development student, I thought: why not create a website that compiles the information I've found about StarCraft for beginners?`,
-            disclaimer: "Note: I am a beginner, and the information may be incorrect. Please contact me\n" +
-                "                    for any modifications.",
+            description: `I recently started playing <strong>StarCraft</strong>, and I find that there is a
+            <strong>huge</strong> lack of easily and quickly understandable content to get into the game, especially in
+            <strong>French</strong>. So, since I am training in web development, I thought: why not create a website 
+            gathering the information I found about StarCraft for beginners?`,
+            disclaimer: "Warning, I am a beginner, and the information may be incorrect. Please contact me for any corrections.",
         },
         info: {
             title: "Information",
-            description: "I would like to gather experienced StarCraft players to refine counters and strategic information. For now, I have compiled the information I found, but it is not always accurate or relevant. As I have often noticed, there are many subtleties. The goal is to provide general guidelines on what to do against an opposing composition, which is particularly useful for beginners like me. The subtleties of counters come with experience.",
+            description: "I would like to bring together experienced StarCraft players to refine counterplays and strategic information. For now, I have only gathered the information I found, but it is not always accurate or relevant. As I have often noticed, there are many nuances. The goal is to provide general guidelines on how to react to an opponent's composition, which is especially useful for beginners like me. The subtleties of counterplays come with experience.",
             features: {
                 title: "Features",
                 description: "Here are the initial features subject to approval. Users will have access to a dashboard to manage everything related to adding and modifying tables, etc.",
                 features: {
                     1: {
-                        title: "Add New Resources"
+                        title: "Adding new resources"
                     },
                     2: {
-                        title: "Modify Information Tables"
+                        title: "Editing information tables"
                     },
                     3: {
-                        title: "Modify Information Tables"
+                        title: "Editing information tables"
                     }
                 }
             }
-        }
+        },
     },
-
+    login: {
+        email: "Email",
+        password: "Password",
+        disclaimer: "Don't have an account? Contact me",
+        error: "The email or password is incorrect",
+        connected: "You are now logged in"
+    },
     footer: {
-        1: "More info on StarCraft",
-        2: "Contact Me",
+        1: "More info about StarCraft",
+        2: "Contact me",
         3: "Not affiliated with Blizzard",
     },
     navBar: {
         1: "Counter",
         2: "Buildings",
         3: "Resources",
-    }
+        language: {
+            fr: "French",
+            en: "English",
+        },
+        profil: {
+            1: "Profile",
+            2: "Settings",
+            3: "Logout",
+        },
+        modal: {
+            title: "Are you sure you want to log out?",
+            cancel: "Cancel",
+            confirm: "Logout",
+        },
+    },
+        counter: {
+            title: "Unit you play",
+        }
 }
 
 export default en;

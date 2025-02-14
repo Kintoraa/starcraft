@@ -13,7 +13,7 @@ export async function createSession(userId) {
 
     cookieStore.set('session', session, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production', // Utilisez secure uniquement en production
+        secure: process.env.NODE_ENV === 'production',
         expires: expiresAt,
         sameSite: 'lax',
         path: '/',
@@ -49,13 +49,28 @@ export async function deleteSession() {
 
 
 export const verifySession = cache(async () => {
-    const cookieStore = await cookies();
-    const cookie = cookieStore.get('session')?.value;
-    const session = await decrypt(cookie);
+    try {
 
-    if (!session?.userId) {
+        const cookieStore = await cookies();
+        const cookie = cookieStore.get('session')?.value;
+
+
+        if (!cookie) {
+            return { isAuth: false };
+        }
+
+
+        const session = await decrypt(cookie);
+
+
+        if (!session?.userId) {
+            return { isAuth: false };
+        }
+
+
+        return { isAuth: true, userId: session.userId };
+    } catch (err) {
+        console.log('Erreur lors de la vérification de la session:', err.message);
         return { isAuth: false };
     }
-
-    return { isAuth: true, userId: session.userId };
 });

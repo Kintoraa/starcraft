@@ -3,11 +3,16 @@ import {useForm} from "react-hook-form";
 import {useState} from "react";
 import {getUser} from "@/db/controller/login.js";
 import { useRouter } from 'next/navigation'
+import {useIsLogged} from "@/app/store/logged.zustand.js";
+import {useI18n} from "../../locales/clients.js";
 
 
 export default function FormLogin() {
-  const[isLogged,setIsLogged] = useState(null);
+  const[isGoodLogin,setGoodLogin] = useState(null);
+  const t = useI18n();
   const router = useRouter();
+      const logged = useIsLogged((state) => state.isLogged);
+      const setLogged = useIsLogged((state) => state.setLogged)
     const {
         register, handleSubmit, watch, formState: {errors},
     } = useForm()
@@ -15,12 +20,11 @@ export default function FormLogin() {
     const onSubmit = async (data) => {
     const {email, password} = data
     const user = await getUser(email, password)
-        setIsLogged(user);
+        setGoodLogin(user);
 
     if(user) {
-    // const {isLogged, setLogged} = useIsLogged();
-    // setLogged(true)
-      setIsLogged(true);
+      setGoodLogin(true);
+      setLogged(true)
     router.push("/")
     }
 
@@ -30,7 +34,7 @@ export default function FormLogin() {
 
     return (
         <main className={"h-screen pt-80 bg-center bg-cover"}   style={{backgroundImage: `url(/image/background/login.jpg)`}}>
-        {!isLogged ?
+        {!logged ?
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center bg-gray-800 p-6 rounded-lg shadow-lg w-80 min-w-[800px] m-auto">
                 <label className="text-white mb-2 font-semibold flex flex-col text-center">
                     Email
@@ -40,7 +44,7 @@ export default function FormLogin() {
                     />
                 </label>
                 <label className="text-white mb-2 font-semibold flex flex-col text-center">
-                    Password
+                    {t("login.password")}
                     <input
                         type={"password"}
                         label="password"
@@ -48,7 +52,9 @@ export default function FormLogin() {
                         className="mt-2 p-3 w-60 bg-gray-700 text-white rounded-md border border-gray-600 focus:border-blue-500 focus:outline-none"
                     />
                 </label>
-                {isLogged === false && <p className={"font-bold text-red-500"}>L'email ou le mot de passe ne correspond pas</p> }
+                <p className={"font-bold text-orange-500"}>{t("login.disclaimer")}</p>
+
+                {isGoodLogin === false && <p className={"font-bold text-red-500"}>{t("login.error")}</p> }
 
                 <input
                     type="submit"
@@ -56,7 +62,7 @@ export default function FormLogin() {
                 />
             </form>
        : <div className={"flex flex-col items-center bg-gray-800 p-6 rounded-lg shadow-lg w-80 min-w-[800px] m-auto"}>
-                <p className={"font-bold text-green-500"}>Vous êtes maintenant connecté </p>
+                <p className={"font-bold text-green-500"}>{t("login.connected")} </p>
             </div> }
 
         </main>

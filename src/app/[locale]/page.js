@@ -6,11 +6,13 @@ import Footer from "@/components/footer";
 import Section from "@/components/section";
 import Separator from "@/components/separator";
 import {getI18n} from "../../../locales/server";
+import {useIsLogged} from "@/app/store/logged.zustand.js";
 
 
 
 export default async function Home() {
     const t = await getI18n();
+
 
     const ids = [1, 2, 3]
 
@@ -20,7 +22,6 @@ export default async function Home() {
             className="flex text-center justify-center  h-screen text-white text-8xl pt-36 flex-col font-bold bg-no-repeat bg-cover "
             style={{backgroundImage: `url(/image/background/home.jpg)`}}>
             <h1>Stracraft 2</h1>
-            <img src={"image/sc2/units/terran/marine.svg"} className={"w-50 h-50"}/>
             <h1>{t("home.title")}</h1>
         </main>
         <Separator/>

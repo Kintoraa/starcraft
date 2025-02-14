@@ -1,10 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
+import {useIsLogged} from "@/app/store/logged.zustand.js";
 
 export default function useSession() {
     const [isAuth, setIsAuth] = useState(null);
-    const [userId, setUserId] = useState(null);
     const [loading, setLoading] = useState(true);
+    const setLogged = useIsLogged((state) => state.setLogged)
 
     useEffect(() => {
         console.log("Fetching session...");
@@ -12,12 +13,12 @@ export default function useSession() {
         const fetchSession = async () => {
             try {
                 const res = await fetch("/api/session");
-                if (!res.ok) return setIsAuth(null);
+                if (!res.ok) throw new Error("Session invalide");
 
                 const data = await res.json();
-                console.log(data);
+                console.log("Session data:", data);
                 setIsAuth(data.isAuth);
-                setUserId(data.userId ? data.userId : null);
+                setLogged(true)
             } catch (error) {
                 console.error("Erreur lors de la récupération de la session:", error);
                 setIsAuth(null);
@@ -29,6 +30,5 @@ export default function useSession() {
         fetchSession();
     }, []);
 
-    return { isAuth, loading, userId };
+    return { isAuth, loading };
 }
-

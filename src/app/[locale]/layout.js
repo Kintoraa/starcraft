@@ -4,6 +4,7 @@ import NavBar from "@/components/navBar";
 import { Roboto } from 'next/font/google'
 import Footer from "@/components/footer";
 import {I18nProviderClient} from "../../../locales/clients.js";
+import {Toaster} from "sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,6 +35,7 @@ export default async function RootLayout({children, params}) {
     return (
         <html lang="fr">
         <body className={`${roboto.variable} `}>
+        <Toaster  richColors closeButton/>
         <I18nProviderClient locale={locale}>
             <NavBar></NavBar>
             {children}
