@@ -69,3 +69,26 @@ export async function getCounters() {
     }
 
 }
+
+export async function updateUnit(unit, unit_id) {
+    const {count_crystal, count_gaz, description_fr, description_en, hp, img_url, melee_or_ranged_en , melee_or_ranged_fr, name_en, name_fr, place, target_type_en, target_type_fr, time_production} = unit
+
+    try {
+      await Unit.update(
+        {
+            count_crystal, count_gaz, description_fr, description_en, hp, img_url, melee_or_ranged_en, melee_or_ranged_fr, name_en, name_fr, place, target_type_en, target_type_fr, time_production
+        }
+    ,
+        {
+            where: {
+                id: unit_id
+            }
+
+    })
+        return true;
+    }catch (error) {
+        console.log(error);
+        return false;
+    }
+
+}

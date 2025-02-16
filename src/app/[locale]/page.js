@@ -21,8 +21,8 @@ export default async function Home() {
         <main
             className="flex text-center justify-center  h-screen text-white text-8xl pt-36 flex-col font-bold bg-no-repeat bg-cover "
             style={{backgroundImage: `url(/image/background/home.jpg)`}}>
-            <h1>Stracraft 2</h1>
-            <h1>{t("home.title")}</h1>
+            <h1 className={"font-oswald"}>Stracraft 2</h1>
+            <h1 className={"font-oswald"}>{t("home.title")}</h1>
         </main>
         <Separator/>
         <Section description={parse(t("home.story.description"))} background={"/image/background/background.jpeg"}

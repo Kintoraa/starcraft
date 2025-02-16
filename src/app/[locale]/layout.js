@@ -1,15 +1,12 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
+import localFont from 'next/font/local'
 import NavBar from "@/components/navBar";
-import { Roboto } from 'next/font/google'
+import { Roboto, Poppins, Oswald } from 'next/font/google'
 import Footer from "@/components/footer";
 import {I18nProviderClient} from "../../../locales/clients.js";
 import {Toaster} from "sonner";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
 
 const roboto = Roboto({
@@ -20,10 +17,25 @@ const roboto = Roboto({
     display: 'swap',
 })
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const myFont = localFont({
+    variable: "--font-myFont",
+    src: "../../../public/fonts/EurostileExtendedBlack.ttf",
+    display: "swap",
+})
+
+
+const poppins = Poppins({
+    variable: "--font-poppins",
+    subsets: ['latin'],
+    weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
 });
+
+const oswald = Oswald({
+    variable: "--font-oswald",
+    subsets: ['latin'],
+    weight: [ '200', '300', '400', '500', '600', '700'],
+});
+
 
 export const metadata = {
   title: "Create Next App",
@@ -33,8 +45,8 @@ export const metadata = {
 export default async function RootLayout({children, params}) {
     const {locale} = await params
     return (
-        <html lang="fr">
-        <body className={`${roboto.variable} `}>
+        <html lang="fr" className={`${poppins.variable}, ${myFont.variable}, ${oswald.variable}, ${roboto.variable}`}>
+        <body >
         <Toaster  richColors closeButton/>
         <I18nProviderClient locale={locale}>
             <NavBar></NavBar>

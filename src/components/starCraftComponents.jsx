@@ -5,6 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs.j
 import {Timer, PersonStanding } from "lucide-react";
 
 import {useCurrentLocale, useI18n} from "../../locales/clients.js";
+import Image from "next/image";
 
 export default function StarcraftRaces({races, allUnits}) {
     const [activeTab, setActiveTab] = useState("1")
@@ -39,8 +40,9 @@ function UnitCard({ unit, raceid }) {
     const name = local === "fr" ? unit.name_fr : unit.name_en;
     const melee = local === "fr" ? melee_or_ranged_fr : melee_or_ranged_en;
 
+    // style={{backgroundImage: `url(/image/background/background.jpeg)`}}
     return (
-        <div className={"flex justify-between p-5 mb-5 rounded-lg"}  style={{backgroundImage: `url(/image/background/background.jpeg)`}}>
+        <div className={"flex justify-between p-5 mb-5 rounded-lg bg-blue-900 "}  >
             <div className={"flex flex-col items-center"}>
                 <h1 className={"font-bold text-2xl"} >{t("counter.title")}</h1>
                 <div className={"flex items-center flex-col "}>
@@ -48,10 +50,10 @@ function UnitCard({ unit, raceid }) {
                     <h3>{name}</h3>
                     <p className={"font-bold"}>{melee}</p>
                     </div>
-                <img className={"size-36"} src={`/image/sc2/units/${raceid}/${unit.img_url.toLowerCase()}.svg`} alt={name}/>
+                <Image width={200} height={200} src={`/image/sc2/units/${raceid}/${unit.img_url.toLowerCase()}.svg`} alt={name}/>
                 <div className={"grid grid-cols-2 gap-4 bg-[#1c2433] rounded-lg"}>
-                    <p  className={"flex flex-col items-center"}><img className={"size-10"} src={'/image/sc2/ressource/crystal.svg'} alt={"crystal"}/> {count_crystal}</p>
-                    <p  className={"flex flex-col items-center"}><img className={"size-10"} src={'/image/sc2/ressource/gaz.svg'} alt={"gaz"}/>{count_gaz}</p>
+                    <p  className={"flex flex-col items-center"}><Image width={100} height={100}  src={'/image/sc2/ressource/crystal.svg'} alt={"crystal"}/> {count_crystal}</p>
+                    <p  className={"flex flex-col items-center"}><Image width={100} height={100}  src={'/image/sc2/ressource/gaz.svg'} alt={"gaz"}/>{count_gaz}</p>
                     <p className={"flex flex-col items-center"}>
                         <Timer /> {time_production}</p>
                     <p className={"flex flex-col items-center"}><PersonStanding /> {place}</p>
@@ -69,15 +71,15 @@ function UnitCard({ unit, raceid }) {
                             <p className={"font-bold"}>{local === "fr" ? counter.melee_or_ranged_fr : counter.melee_or_ranged_en}</p>
                         </div>
 
-                        <img className={"size-36"} src={`/image/sc2/units/${1}/${counter.img_url.toLowerCase()}.svg`}
+                        <Image width={200} height={200} src={`/image/sc2/units/${1}/${counter.img_url.toLowerCase()}.svg`}
                              alt={counter.name}/>
                         <div className={"grid grid-cols-2 gap-4 bg-[#1c2433] rounded-lg"}>
-                            <p className={"flex flex-col items-center"}><img className={"size-10"}
-                                                                             src={'/image/sc2/ressource/crystal.svg'}
+                            <p className={"flex flex-col items-center"}><Image width={100} height={100}
+                                                                               src={'/image/sc2/ressource/crystal.svg'}
                                                                              alt={"crystal"}/> {counter.count_crystal}
                             </p>
-                            <p className={"flex flex-col items-center"}><img className={"size-10"}
-                                                                             src={'/image/sc2/ressource/gaz.svg'}
+                            <p className={"flex flex-col items-center"}><Image width={100} height={100}
+                                                                               src={'/image/sc2/ressource/gaz.svg'}
                                                                              alt={"gaz"}/>{counter.count_gaz}</p>
                             <p className={"flex flex-col items-center"}>
                                 <Timer/> {counter.time_production}</p>
@@ -96,15 +98,15 @@ function UnitCard({ unit, raceid }) {
                             <h3>{local === "fr" ? counter.name_fr : counter.name_en}</h3>
                             <p className={"font-bold"}>{local === "fr" ? counter.melee_or_ranged_fr : counter.melee_or_ranged_en}</p>
                         </div>
-                        <img className={"size-36"} src={`/image/sc2/units/${2}/${counter.img_url.toLowerCase()}.svg`}
+                        <Image width={200} height={200}  src={`/image/sc2/units/${2}/${counter.img_url.toLowerCase()}.svg`}
                              alt={counter.name}/>
                         <div className={"grid grid-cols-2 gap-4 bg-[#1c2433] rounded-lg"}>
-                            <p className={"flex flex-col items-center"}><img className={"size-10"}
-                                                                             src={'/image/sc2/ressource/crystal.svg'}
+                            <p className={"flex flex-col items-center"}><Image width={100} height={100}
+                                                                               src={'/image/sc2/ressource/crystal.svg'}
                                                                              alt={"crystal"}/> {counter.count_crystal}
                             </p>
-                            <p className={"flex flex-col items-center"}><img className={"size-10"}
-                                                                             src={'/image/sc2/ressource/gaz.svg'}
+                            <p className={"flex flex-col items-center"}><Image width={100} height={100}
+                                                                               src={'/image/sc2/ressource/gaz.svg'}
                                                                              alt={"gaz"}/>{counter.count_gaz}</p>
                             <p className={"flex flex-col items-center"}>
                                 <Timer/> {counter.time_production}</p>
@@ -123,15 +125,15 @@ function UnitCard({ unit, raceid }) {
                             <h3>{local === "fr" ? counter.name_fr : counter.name_en}</h3>
                             <p className={"font-bold"}></p>
                         </div>
-                        <img className={"size-52"} src={`/image/sc2/units/${3}/${counter.name_fr.toLowerCase()}.svg`}
+                        <Image width={200} height={200}  src={`/image/sc2/units/${3}/${counter.name_fr.toLowerCase()}.svg`}
                              alt={counter.name}/>
                         <div className={"grid grid-cols-2 gap-4"}>
-                            <p className={"flex flex-col items-center"}><img className={"size-10"}
-                                                                             src={'/image/sc2/ressource/crystal.svg'}
+                            <p className={"flex flex-col items-center"}><Image width={100} height={100}
+                                                                               src={'/image/sc2/ressource/crystal.svg'}
                                                                              alt={"crystal"}/> {counter.count_crystal}
                             </p>
-                            <p className={"flex flex-col items-center"}><img className={"size-10"}
-                                                                             src={'/image/sc2/ressource/gaz.svg'}
+                            <p className={"flex flex-col items-center"}><Image width={100} height={100}
+                                                                               src={'/image/sc2/ressource/gaz.svg'}
                                                                              alt={"gaz"}/>{counter.count_gaz}</p>
                             <p className={"flex flex-col items-center"}>
                                 <Timer/> {counter.time_production}</p>

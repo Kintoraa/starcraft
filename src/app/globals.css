@@ -1,9 +1,13 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+@theme {
+  --font-oswald: "Oswald", sans-serif;
+}
 
 html,
 body {
+  font-family: "poppins", sans-serif;
   max-width: 100vw;
   overflow-x: hidden;
 }

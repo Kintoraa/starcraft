@@ -3,18 +3,18 @@ const fr = {
         title: "Pour les débutants",
         story: {
             title: "Mon histoire",
-            description: `J'ai commencé <strong>StarCraft</strong> récemment, et je trouve qu'il manque 
-            <strong>énormément</strong> de contenu facilement et rapidement compréhensible pour appréhender le jeu, 
-            surtout en <strong>français</strong>. Alors, étant en formation de développement web, je me suis dit : 
-            pourquoi ne pas créer un site regroupant les informations que j'ai pu trouver sur StarCraft pour les débutants ?`,
-            disclaimer: "Attention, je suis débutant, les informations peuvent être incorrectes. Veuillez me contacter pour toute correction.",
+            description: `J'ai récemment commencé <strong>StarCraft</strong> et je trouve qu'il manque 
+            <strong>énormément</strong> de contenu facilement et rapidement compréhensible pour apprendre le jeu, 
+            surtout en <strong>français</strong>. Étant en formation de développement web, je me suis dit : 
+            pourquoi ne pas créer un site regroupant les informations que j'ai trouvées sur StarCraft pour les débutants ?`,
+            disclaimer: "Attention : je suis débutant, certaines informations peuvent être incorrectes. N'hésitez pas à me contacter pour toute correction.",
         },
         info: {
             title: "Informations",
-            description: "J’aimerais rassembler des joueurs expérimentés de StarCraft afin d’affiner les contres et les informations stratégiques. Pour l’instant, je me suis contenté de regrouper les informations que j’ai trouvées, mais elles ne sont pas toujours précises ou pertinentes. Comme je l’ai souvent remarqué, il existe de nombreuses subtilités. L’objectif est donc de fournir des repères généraux pour savoir quoi faire face à une composition adverse, ce qui est particulièrement utile pour les débutants comme moi. Les subtilités des contres viennent ensuite avec l’expérience.",
+            description: "J’aimerais réunir des joueurs expérimentés de StarCraft pour affiner les stratégies et les contres. Pour l’instant, j’ai simplement regroupé les informations que j’ai trouvées, mais elles ne sont pas toujours précises ou pertinentes. J’ai remarqué qu’il existe de nombreuses subtilités. L’objectif est donc d’offrir des repères généraux pour savoir comment réagir face à une composition adverse, ce qui est particulièrement utile pour les débutants comme moi. Les détails plus fins des contres s’acquièrent avec l’expérience.",
             features: {
                 title: "Fonctionnalités",
-                description: "Voici les fonctionnalités initiales soumises à approbation. Les utilisateurs auront accès à un tableau de bord pour gérer tout ce qui concerne l'ajout et la modification des tableaux, etc.",
+                description: "Voici les fonctionnalités initiales en attente de validation. Les utilisateurs auront accès à un tableau de bord pour gérer l'ajout et la modification des données.",
                 features: {
                     1: {
                         title: "Ajout de nouvelles ressources"
@@ -23,7 +23,7 @@ const fr = {
                         title: "Modification des tableaux d'informations"
                     },
                     3: {
-                        title: "Modification des tableaux d'informations"
+                        title: "Suppression des tableaux d'informations"
                     }
                 }
             }
@@ -34,7 +34,7 @@ const fr = {
         password: "Mot de passe",
         disclaimer: "Vous n'avez pas de compte ? Contactez-moi",
         error: "L'email ou le mot de passe est incorrect",
-        connected: "Vous êtes maintenant connecté"
+        connected: "Vous êtes maintenant connecté",
     },
     footer: {
         1: "Plus d'infos sur StarCraft",
@@ -60,13 +60,30 @@ const fr = {
             confirm: "Déconnexion",
         },
     },
-        counter: {
-            title: "Unité que vous jouer",
+    counter: {
+        title: "Unité que vous jouez",
+    },
+    dashboard: {
+        confirm: "Confirmer",
+        title: "Sélectionnez une unité à jouer",
+        modifier: {
+            title: "Vous modifiez l'unité : ",
+            buttonModifier: "Modifier",
+            pageTitle: "Toutes les unités de StarCraft 2",
+            loading: "Modification en cours...",
+            description: "Remplissez les champs à modifier",
+            save: "Sauvegarder les modifications",
+            cancel: "Annuler",
         },
-        dashboard: {
-         confirm: "confirmer",
-         title: "Selectionez une unité qui sera joué"
-        }
-}
+        counter: {
+            add: "Ajouter un contre d'unité",
+            exist: "Ce contre existe déjà !",
+            hp: "Points de vie",
+            confirmQuestion: "Voulez-vous vraiment supprimer cette unité ?",
+            suppress: "Suppression en cours...",
+            deleteButton: "Supprimer",
+        },
+    },
+};
 
 export default fr;

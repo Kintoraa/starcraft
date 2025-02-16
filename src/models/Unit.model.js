@@ -5,12 +5,20 @@ export default class Unit extends Model {}
 
 Unit.init(
     {
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+        },
         name_en: {
             type: DataTypes.STRING(100),
             allowNull: false,
         },
         name_fr: {
             type: DataTypes.STRING(100),
+            allowNull: false,
+        },
+        hp: {
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
         description_en: {
@@ -30,6 +38,14 @@ Unit.init(
         },
         melee_or_ranged_en: {
             type: DataTypes.STRING,
+        },
+        target_type_fr: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        target_type_en: {
+            type: DataTypes.STRING,
+            allowNull: true,
         },
         count_crystal: {
             type: DataTypes.INTEGER,

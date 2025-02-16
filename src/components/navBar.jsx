@@ -23,12 +23,13 @@ export default function NavBar() {
 
     return (
         <nav
-            className={"bg-[#1C2433] h-24 w-[95%] p-4 top-4 left-1/2 -translate-x-1/2  flex fixed justify-between text-white font-bold items-center rounded-lg"}>
+            className={"bg-[#1C2433] h-24 w-[95%] z-50 p-4 top-4 left-1/2 -translate-x-1/2  flex fixed justify-between text-white font-bold items-center rounded-lg"}>
             <div>
                 <ul className={"flex gap-4"}>
                     <li className={"cursor-pointer"}><Link href={"/counter"}> {t("navBar.1")}</Link></li>
                     <li className={"cursor-pointer"}>{t("navBar.2")}</li>
                     <li className={"cursor-pointer"}>{t("navBar.3")}</li>
+                    <li className={"cursor-pointer"}>Lexique</li>
                 </ul>
             </div>
             <div>
