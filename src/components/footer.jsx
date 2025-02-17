@@ -11,6 +11,10 @@ export default  async function Footer() {
             <ul className={"flex flex-col justify-center items-center gap-10 font-bold "}>
                 <li> <a href={"https://starcraft2.blizzard.com/fr-fr/"} target={"_blank"}>{t("footer.1")}</a></li>
                 <li>{t("footer.2")}</li>
+                {/*<li>Politique de Confidentialité</li>*/}
+                {/*<li>Conditions Générales d'Utilisation</li>*/}
+                {/*<li>Politique de Cookies</li>*/}
+                {/*<li>Mentions Légales</li>*/}
             </ul>
             <p className={"absolute bottom-5 right-5 text-gray-500"}>{t("footer.3")}</p>
         </footer>

@@ -1,0 +1,34 @@
+import Link from "next/link"
+
+
+export default function ResourceCard({title, description, link, badge}) {
+    return (
+        <div className="bg-gray-800 overflow-hidden shadow rounded-lg">
+            <div className="px-3 py-3">
+                <h3 className="text-sm font-medium text-gray-100">{title}</h3>
+                <p className="mt-1 text-xs text-gray-400">{description}</p>
+            </div>
+            <div className="px-3 py-2 flex justify-between">
+                <Link
+                    href={link}
+                    className="text-xs font-medium text-blue-400 hover:text-blue-300"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Voir plus <span aria-hidden="true">&rarr;</span>
+                </Link>
+                {badge === "FR" ? (
+
+                    <div className="badge badge-success gap-2 ">
+                        {badge}
+                    </div>
+                ) : (
+                    <div className="badge badge-warning gap-2">
+                        {badge}
+                    </div>
+                )}
+            </div>
+        </div>
+    )
+}
+

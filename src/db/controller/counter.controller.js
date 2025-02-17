@@ -3,8 +3,12 @@
 
 
 import {Counters} from "@/models/Counter.model.js";
+import {verifySession} from "@/app/lib/session.js";
+import {redirect} from "next/navigation";
 
 export async function addCounter(unit_id, counter_id) {
+    const session = await verifySession();
+    if(!session.isAuth) return redirect("/login");
 
     try {
     await Counters.create({
@@ -21,6 +25,8 @@ export async function addCounter(unit_id, counter_id) {
 
 
 export async function removeCounter(id_unit, id_counter) {
+    const session = await verifySession();
+    if(!session.isAuth) return redirect("/login");
     try {
          await Counters.destroy({
             where: {

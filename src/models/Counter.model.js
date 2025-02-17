@@ -1,8 +1,9 @@
-import { DataTypes, Model } from "sequelize";
-import { sequelize } from "../db/client.js";
+import {DataTypes, Model} from "sequelize";
+import {sequelize} from "../db/client.js";
 
 
-export class Counters extends Model {}
+export class Counters extends Model {
+}
 
 Counters.init(
     {
@@ -16,6 +17,14 @@ Counters.init(
             allowNull: false,
             primaryKey: true,
         },
+        description: {
+            type: DataTypes.TEXT,
+            allowNull: true,
+        },
+        condition: {
+            type: DataTypes.TEXT,
+            allowNull: true,
+        }
     },
     {
         sequelize,

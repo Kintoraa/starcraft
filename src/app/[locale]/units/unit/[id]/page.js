@@ -1,15 +1,11 @@
 import {Suspense} from "react";
 import Loading from "@/app/[locale]/dashboard/loading.js";
+import UnitDashBoardAdmin from "@/components/UnitDashBoardWrapper.jsx";
 import {getI18n} from "../../../../../../locales/server.js";
-import {verifySession} from "@/app/lib/session.js";
-import {redirect} from "next/navigation.js";
-import UnitAdmin from "@/components/unitAdmin.jsx";
+import Unit from "@/components/Unit.jsx";
 
 
-export default async function Page({params}) {
-    const session = await verifySession();
-    if (!session.isAuth) return redirect("/login");
-    const t = await getI18n()
+export default async function Page({ params }) {
 
     const id = (await params).id
     return (
@@ -17,7 +13,7 @@ export default async function Page({params}) {
               style={{backgroundImage: `url(/image/background/login.jpg)`}}>
 
             <Suspense fallback={<Loading/>}>
-                <UnitAdmin id_unit={id}></UnitAdmin>
+          <Unit id_unit={id}></Unit>
             </Suspense>
         </main>
     )
