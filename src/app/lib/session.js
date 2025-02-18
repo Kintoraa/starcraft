@@ -1,14 +1,14 @@
 import 'server-only';
-import { cookies } from 'next/headers';
-import { SignJWT, jwtVerify } from 'jose';
-import { cache } from 'react';
+import {cookies} from 'next/headers';
+import {jwtVerify, SignJWT} from 'jose';
+import {cache} from 'react';
 
 const secretKey = process.env.SESSION_SECRET;
 const encodedKey = new TextEncoder().encode(secretKey);
 
 export async function createSession(userId) {
-    const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000);
-    const session = await encrypt({ userId, expiresAt });
+    const expiresAt = new Date(Date.now() + 72 * 60 * 60 * 1000);
+    const session = await encrypt({userId, expiresAt});
     const cookieStore = await cookies();
 
     cookieStore.set('session', session, {
@@ -23,7 +23,7 @@ export async function createSession(userId) {
 
 export async function encrypt(payload) {
     return new SignJWT(payload)
-        .setProtectedHeader({ alg: 'HS256' })
+        .setProtectedHeader({alg: 'HS256'})
         .setIssuedAt()
         .setExpirationTime('7d')
         .sign(encodedKey);
@@ -31,7 +31,7 @@ export async function encrypt(payload) {
 
 export async function decrypt(session) {
     try {
-        const { payload } = await jwtVerify(session, encodedKey, {
+        const {payload} = await jwtVerify(session, encodedKey, {
             algorithms: ['HS256'],
         });
         return payload;
@@ -47,7 +47,6 @@ export async function deleteSession() {
 }
 
 
-
 export const verifySession = cache(async () => {
     try {
 
@@ -56,7 +55,7 @@ export const verifySession = cache(async () => {
 
 
         if (!cookie) {
-            return { isAuth: false };
+            return {isAuth: false};
         }
 
 
@@ -64,13 +63,13 @@ export const verifySession = cache(async () => {
 
 
         if (!session?.userId) {
-            return { isAuth: false };
+            return {isAuth: false};
         }
 
 
-        return { isAuth: true, userId: session.userId };
+        return {isAuth: true, userId: session.userId};
     } catch (err) {
         console.log('Erreur lors de la vérification de la session:', err.message);
-        return { isAuth: false };
+        return {isAuth: false};
     }
 });

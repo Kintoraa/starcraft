@@ -1,4 +1,3 @@
-
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card.jsx";
 import {Button} from "@/components/ui/button.jsx";
 import Link from 'next/link'
@@ -7,7 +6,7 @@ import {redirect} from "next/navigation.js";
 
 export default async function Page() {
     const session = await verifySession();
-    if(!session.isAuth) return redirect("/login");
+    if (!session.isAuth) return redirect("/login");
     return (
         <main className={"min-h-screen pt-80 bg-center bg-cover"}
               style={{backgroundImage: `url(/image/background/login.jpg)`}}>
@@ -25,7 +24,7 @@ export default async function Page() {
                             <Link href="/dashboard/unit">Modifier les unités</Link>
                         </Button>
                         <Button asChild className="w-full">
-                            <Link href="/dashboard/link3">Lien 3</Link>
+                            <Link href="/dashboard/ressources">Gerer les ressources</Link>
                         </Button>
                     </CardContent>
                 </Card>

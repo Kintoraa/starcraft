@@ -9,6 +9,10 @@ const fr = {
             pourquoi ne pas créer un site regroupant les informations que j'ai trouvées sur StarCraft pour les débutants ?`,
             disclaimer: "Attention : je suis débutant, certaines informations peuvent être incorrectes. N'hésitez pas à me contacter pour toute correction.",
         },
+        start: {
+            title: "Avant tout, c'est quoi StarCraft 2 ?",
+            description: "StarCraft 2 est un jeu de stratégie en temps réel (RTS) développé par Blizzard. Non, ne partez pas, je vous promets qu'ils ont fait de bons jeux ! Sorti en 2010, il se déroule dans un univers de science-fiction où trois races s'affrontent. Il propose un mode multijoueur, du ranked si vous aimez grimper dans le ladder comme moi, et une campagne solo pour se détendre !"
+        },
         info: {
             title: "Informations",
             description: "J’aimerais réunir des joueurs expérimentés de StarCraft pour affiner les stratégies et les contres. Pour l’instant, j’ai simplement regroupé les informations que j’ai trouvées, mais elles ne sont pas toujours précises ou pertinentes. J’ai remarqué qu’il existe de nombreuses subtilités. L’objectif est donc d’offrir des repères généraux pour savoir comment réagir face à une composition adverse, ce qui est particulièrement utile pour les débutants comme moi. Les détails plus fins des contres s’acquièrent avec l’expérience.",

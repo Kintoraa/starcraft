@@ -1,4 +1,4 @@
-export default function Section({ description, title, background, color = "red", children }) {
+export default function Section({description, title, background, color = "red", children}) {
 
     // fetch("/api/session")
     return (
@@ -13,7 +13,7 @@ export default function Section({ description, title, background, color = "red",
             }}
         >
             <h1 className="text-center uppercase font-bold text-4xl">{title}</h1>
-            <p className="max-w-[1200px] m-auto">{description}</p>
+            <p className="max-w-[1200px] text-xl m-auto">{description}</p>
             {children}
         </section>
     );

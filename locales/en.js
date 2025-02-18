@@ -9,6 +9,10 @@ const en = {
             why not create a website gathering the information I found about StarCraft for beginners?`,
             disclaimer: "Warning: I am a beginner, and some information may be incorrect. Please contact me for any corrections.",
         },
+        start: {
+            title: "First of all, what is StarCraft 2?",
+            description: "StarCraft 2 is a real-time strategy (RTS) game developed by Blizzard. No, don't leave! I promise they've made some great games! Released in 2010, it takes place in a sci-fi universe where three races battle it out. It offers multiplayer mode, ranked if you love climbing the ladder like me, and a campaign mode to chill!"
+        },
         info: {
             title: "Information",
             description: "I would like to gather experienced StarCraft players to refine counters and strategic information. For now, I have only compiled the information I found, but it is not always accurate or relevant. As I’ve often noticed, there are many subtleties. The goal is to provide general guidelines on how to respond to an opponent’s composition, which is especially useful for beginners like me. The finer details of counters come with experience.",
