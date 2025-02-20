@@ -2,8 +2,8 @@
 
 
 import {Race, Unit} from "@/models/associations.js";
-import {verifySession} from "@/app/lib/session.js";
-import {redirect} from "next/navigation.js";
+import {isAuthorized} from "@/app/lib/isAuth.js";
+import {formSchemaUnit} from "@/schema/unit.schema.js";
 
 export async function getAllUnits() {
     try {
@@ -90,6 +90,9 @@ export async function getAllUnityWithRace() {
 // }
 
 export async function updateUnit(unit, unit_id) {
+    await formSchemaUnit.parseAsync(unit)
+
+    await isAuthorized()
     const {
         count_crystal,
         count_gaz,
@@ -106,8 +109,6 @@ export async function updateUnit(unit, unit_id) {
         target_type_fr,
         time_production
     } = unit
-    const session = await verifySession();
-    if (!session.isAuth) return redirect("/login");
     try {
         await Unit.update(
             {

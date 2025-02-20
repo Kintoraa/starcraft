@@ -6,6 +6,10 @@ export default class Ressource extends Model {
 
 
 Ressource.init({
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+    },
     title: {
         type: DataTypes.STRING,
         allowNull: false,

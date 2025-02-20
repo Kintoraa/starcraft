@@ -33,7 +33,7 @@ export default function ResourceCard({title, description, link, badge, isAuth, r
             </div>
             {isAuth && (
                 <div className={"flex justify-between items-center px-2"}>
-                    <FormModifierRessource ressource={ressource}></FormModifierRessource>
+                    <FormModifierRessource ressourceId={ressourceId} ressource={ressource}></FormModifierRessource>
                     <AlertDelete ressourceId={ressourceId}></AlertDelete>
                 </div>
             )

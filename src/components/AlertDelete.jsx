@@ -22,16 +22,16 @@ export function AlertDelete({ressourceId}) {
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setError] = useState(false);
     const setReload = useReload((state) => state.SetReload)
+
     const handleClick = async (id) => {
-        if (ressourceId) {
-            setIsLoading(true);
-            const res = await deleteRessource(id)
-            setIsLoading(false);
-            if (!res) setError(true);
-            setReload(prevState => !prevState);
-            toast.success("Ressource supprimé avec succés !")
-        }
-        console.log(ressourceId)
+
+        if (!ressourceId) return toast.error("Aucun ressource trouvée")
+        setIsLoading(true);
+        const res = await deleteRessource(id)
+        setIsLoading(false);
+        if (!res) setError(true);
+        setReload(prevState => !prevState);
+        toast.success("Ressource supprimé avec succés !")
     }
 
     return (

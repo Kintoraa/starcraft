@@ -28,7 +28,7 @@ export default function NavBar() {
                     <li className={"cursor-pointer"}><Link href={"/units"}>Unités</Link></li>
                     <li className={"cursor-pointer"}>{t("navBar.2")}</li>
                     <li className={"cursor-pointer"}><Link href={"/ressources"}>{t("navBar.3")} </Link></li>
-                    <li className={"cursor-pointer"}>Lexique</li>
+                    <li className={"cursor-pointer"}><Link href={"/lexique"}>Lexique</Link></li>
                 </ul>
             </div>
             <div>

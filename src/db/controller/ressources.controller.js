@@ -1,8 +1,8 @@
 "use server"
 
 import Ressource from "@/models/Ressource.model.js";
-import {verifySession} from "@/app/lib/session.js";
-import {redirect} from "next/navigation.js";
+import {ressourceSchema} from "@/schema/ressource.schema.js";
+import {isAuthorized} from "@/app/lib/isAuth.js";
 
 export async function getAllRessources() {
     try {
@@ -15,8 +15,8 @@ export async function getAllRessources() {
 }
 
 export async function createRessource(data) {
-    const session = await verifySession();
-    if (!session.isAuth) return redirect("/login");
+
+    await isAuthorized()
     try {
         await Ressource.create(data);
         return true
@@ -27,13 +27,42 @@ export async function createRessource(data) {
     }
 }
 
-export async function updateRessource(data) {
+export async function updateRessource(data, id) {
+    await isAuthorized();
+    const zodTesting = await ressourceSchema.parseAsync(data)
+    if (!zodTesting) return false;
+    const {
+        title,
+        description,
+        url,
+        tag,
+        section,
+    } = zodTesting;
+
+    try {
+        await Ressource.update(
+            {
+                title,
+                description,
+                url,
+                tag,
+                section,
+            },
+            {
+                where: {
+                    id: id
+                },
+            })
+        return true;
+    } catch (error) {
+        return false;
+    }
+
 
 }
 
 export async function deleteRessource(id) {
-    const session = await verifySession();
-    if (!session.isAuth) return redirect("/login");
+    await isAuthorized()
 
     try {
         const res = await Ressource.destroy({
